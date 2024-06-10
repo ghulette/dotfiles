@@ -7,3 +7,4 @@ These dotfiles assume some set up:
 3. For tmux, you need to install TPM: `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 4. I use [Catppuccin](https://github.com/catppuccin/catppuccin) across the terminal, tmux, and nvim and unfortunately this doesn't work well with Terminal.app on Mac. Use alacritty instead.
 5. You need to install a [Nerd Font](https://www.nerdfonts.com/font-downloads). I like JetBrains Mono but any Nerd Font should work.
+6. It seems like the nvim markdown plugin also needs `markdownlint-cli` installed via package manager.
