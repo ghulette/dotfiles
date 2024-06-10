@@ -26,5 +26,6 @@ _fzf_compgen_dir() {
 # ---- Eza (better ls) -----
 alias ls="eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 
-# opam configuration
-[[ ! -r /Users/geoffhulette/.opam/opam-init/init.zsh ]] || source /Users/geoffhulette/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+# ---- Load local configuration, if available ----
+# This is for machine-local config 
+[ -f "$HOME/.zsh_local" ] && source "$HOME/.zsh_local"
