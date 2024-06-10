@@ -1,4 +1,6 @@
 PROMPT='%1~ %# '
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
 
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
