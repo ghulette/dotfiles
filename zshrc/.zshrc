@@ -28,4 +28,4 @@ alias ls="eza --color=always --git --no-filesize --icons=always --no-time --no-u
 
 # ---- Load local configuration, if available ----
 # This is for machine-local config 
-[ -f "$HOME/.zsh_local" ] && source "$HOME/.zsh_local"
+[ -f "$HOME/.zshrc_local" ] && source "$HOME/.zshrc_local"
