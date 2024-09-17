@@ -10,12 +10,11 @@ To set up:
 
 - I like Nord theme JetBrains Mono font.
 
-This will set up symlinks:
-
 ```
 $ git clone git@github.com:ghulette/dotfiles.git ~/.dotfiles
 $ cd .dotfiles
-$ stow .
+$ stow nvim  # do this for each command you want to install
+$ stow ...
 ```
 
 Don't forget to update using `stow .` in the `.dotfiles` directory after `git pull`.
