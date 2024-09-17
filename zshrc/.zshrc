@@ -4,7 +4,6 @@ PROMPT='%1~ %# '
 alias ls="eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 
 # ---- Load local configuration, if available ----
-# This is for machine-local config
 [ -f "$HOME/.zshrc_local" ] && source "$HOME/.zshrc_local"
 
 # Dump into fish
