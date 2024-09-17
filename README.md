@@ -17,4 +17,6 @@ $ stow nvim  # do this for each command you want to install
 $ stow ...
 ```
 
-Don't forget to update using `stow .` in the `.dotfiles` directory after `git pull`.
+Don't forget to update using `stow [cmdname]` in the `.dotfiles` directory, e.g., after `git pull`.
+
+If you want to remove symlinks use `stow -D [cmdname]`.
