@@ -1,0 +1,19 @@
+# Intentionally undefined user.name and user.email, since this file is 
+# shared across different roles. These should be set up using the NAME and
+# EMAIL environment variables instead.
+
+[core]
+	excludesfile = ~/.gitignore
+	editor = nvim
+[pull]
+	rebase = true
+[init]
+	defaultBranch = main
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p
