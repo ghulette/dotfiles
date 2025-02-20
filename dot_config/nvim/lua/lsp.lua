@@ -1,24 +1,8 @@
-require('mason').setup({
-    ui = {
-        icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗"
-        }
-    }
-})
-
+require('mason').setup{}
 require('mason-lspconfig').setup({
     -- A list of servers to automatically install if they're not already installed
     ensure_installed = { 'lua_ls', 'rust_analyzer' },
 })
-
--- Set different settings for different languages' LSP.
--- LSP list: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
--- How to use setup({}): https://github.com/neovim/nvim-lspconfig/wiki/Understanding-setup-%7B%7D
---     - the settings table is sent to the LSP.
---     - on_attach: a lua callback function to run after LSP attaches to a given buffer.
-local lspconfig = require("lspconfig")
 
 -- Customized on_attach function.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions.
@@ -69,10 +53,7 @@ local on_attach = function(client, bufnr)
 	end, bufopts)
 end
 
--- How to add a LSP for a specific programming language?
--- 1. Use `:Mason` to install the corresponding LSP.
--- 2. Add the configuration below. The syntax is `lspconfig.<name>.setup(...)`
--- Hint (find <name> here) : https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+local lspconfig = require("lspconfig")
 
 lspconfig.lua_ls.setup({
 	on_attach = on_attach,
@@ -97,6 +78,10 @@ lspconfig.lua_ls.setup({
 		},
 	},
 })
+
+lspconfig.racket_langserver.setup{
+    on_attach = on_attach,
+}
 
 lspconfig.rust_analyzer.setup({
 	-- source: https://rust-analyzer.github.io/manual.html#nvim-lsp
