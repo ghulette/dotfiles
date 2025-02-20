@@ -26,5 +26,6 @@ require("lazy").setup({
 	"williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
     "catppuccin/nvim",
+    "bohlender/vim-smt2",
 })
 

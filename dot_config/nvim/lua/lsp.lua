@@ -84,6 +84,5 @@ lspconfig.racket_langserver.setup{
 }
 
 lspconfig.rust_analyzer.setup({
-	-- source: https://rust-analyzer.github.io/manual.html#nvim-lsp
 	on_attach = on_attach,
 })
