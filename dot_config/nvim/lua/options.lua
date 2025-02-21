@@ -24,3 +24,7 @@ vim.opt.smartcase = true            -- but make it case sensitive if an uppercas
 -- Disable netrw (for nvim-tree)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+-- Listchars
+vim.o.listchars = 'tab:>>,lead:·,trail:·'
+vim.o.list = true

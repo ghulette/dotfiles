@@ -15,15 +15,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
---vim.g.mapleader = " "
---vim.g.maplocalleader = "\\"
-
-require("lazy").setup({
+require("lazy").setup{
     "williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
+    "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
     "catppuccin/nvim",
     "bohlender/vim-smt2",
@@ -33,13 +27,14 @@ require("lazy").setup({
         'nvim-telescope/telescope.nvim', tag = '0.1.8',
         dependencies = { 'nvim-lua/plenary.nvim' }
     }
-})
+}
 
+-- nvim-tree config
 require("nvim-tree").setup()
-vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', {
-    noremap = true
-})
+vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>E', ':NvimTreeFocus<CR>', { noremap = true })
 
+-- Telescope config
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
