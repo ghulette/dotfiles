@@ -18,8 +18,8 @@ vim.opt.rtp:prepend(lazypath)
 -- Make sure to setup `mapleader` and `maplocalleader` before
 -- loading lazy.nvim so that mappings are correct.
 -- This is also a good place to setup other settings (vim.opt)
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+--vim.g.mapleader = " "
+--vim.g.maplocalleader = "\\"
 
 require("lazy").setup({
     "williamboman/mason.nvim",
@@ -27,5 +27,11 @@ require("lazy").setup({
     "neovim/nvim-lspconfig",
     "catppuccin/nvim",
     "bohlender/vim-smt2",
+    "nvim-tree/nvim-tree.lua",
+    "nvim-tree/nvim-web-devicons",
 })
 
+require("nvim-tree").setup()
+vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', {
+    noremap = true
+})
