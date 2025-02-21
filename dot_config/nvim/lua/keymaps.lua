@@ -19,8 +19,8 @@ vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
 -- delta: 2 lines
 vim.keymap.set('n', '<C-Up>', ':resize -2<CR>', opts)
 vim.keymap.set('n', '<C-Down>', ':resize +2<CR>', opts)
-vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', opts)
-vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', opts)
+vim.keymap.set('n', '<C-A-Left>', ':vertical resize -2<CR>', opts)
+vim.keymap.set('n', '<C-A-Right>', ':vertical resize +2<CR>', opts)
 
 -- Move text up and down
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", opts)

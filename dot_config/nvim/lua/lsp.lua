@@ -1,7 +1,7 @@
 require('mason').setup{}
 require('mason-lspconfig').setup({
     -- A list of servers to automatically install if they're not already installed
-    ensure_installed = { 'lua_ls', 'rust_analyzer' },
+    ensure_installed = { 'lua_ls', 'rust_analyzer', 'pylsp' },
 })
 
 -- Customized on_attach function.
@@ -86,3 +86,8 @@ lspconfig.racket_langserver.setup{
 lspconfig.rust_analyzer.setup({
 	on_attach = on_attach,
 })
+
+lspconfig.pylsp.setup({
+	on_attach = on_attach,
+})
+
