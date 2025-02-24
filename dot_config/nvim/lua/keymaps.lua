@@ -26,3 +26,10 @@ vim.keymap.set("n", "<A-K>", ":m .-2<CR>==", opts)
 -- Hint: start visual mode with the same area as the previous area and the same mode
 vim.keymap.set('v', '<', '<gv', opts)
 vim.keymap.set('v', '>', '>gv', opts)
+
+-------------------
+-- Terminal mode --
+-------------------
+
+local t_opts = {silent = true}
+vim.keymap.set('t', '<esc>', '<C-\\><C-N><C-W>p', t_opts)
