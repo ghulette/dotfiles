@@ -3,5 +3,7 @@ PROMPT='%1~ %# '
 # ---- Load local configuration, if available ----
 [ -f "$HOME/.zshrc_local" ] && source "$HOME/.zshrc_local"
 
+[ -d "$HOME/.local/bin" ] && export PATH=$PATH:"$HOME/.local/bin"
+
 # Dump into fish
 exec fish
