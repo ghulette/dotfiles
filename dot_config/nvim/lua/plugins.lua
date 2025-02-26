@@ -16,23 +16,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup{
+    "catppuccin/nvim",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
-    "catppuccin/nvim",
     "bohlender/vim-smt2",
-    "nvim-tree/nvim-tree.lua",
-    "nvim-tree/nvim-web-devicons",
     {
         'nvim-telescope/telescope.nvim', tag = '0.1.8',
         dependencies = { 'nvim-lua/plenary.nvim' }
     }
 }
-
--- nvim-tree config
-require("nvim-tree").setup()
-vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true })
-vim.keymap.set('n', '<leader>E', ':NvimTreeFocus<CR>', { noremap = true })
 
 -- Telescope config
 local builtin = require('telescope.builtin')
