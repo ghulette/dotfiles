@@ -15,9 +15,6 @@ vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer.
 local on_attach = function(client, bufnr)
-	-- Enable completion triggered by <c-x><c-o>
-	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
 	if client.name == "rust_analyzer" then
 		-- WARNING: This feature requires Neovim 0.10 or later.
 		vim.lsp.inlay_hint.enable()
