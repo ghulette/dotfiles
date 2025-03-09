@@ -1,5 +1,5 @@
 general.import = [
-  "theme/catppuccin-mocha.toml"
+  "theme/catppuccin-frappe.toml"
 ]
 
 [window]
