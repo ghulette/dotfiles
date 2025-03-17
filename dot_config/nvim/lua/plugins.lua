@@ -17,6 +17,12 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup{
     "catppuccin/nvim",
+    {
+        "kylechui/nvim-surround",
+        config = function()
+            require("nvim-surround").setup()
+        end
+    },
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
