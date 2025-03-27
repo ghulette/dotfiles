@@ -14,6 +14,7 @@ vim.opt.number = true               -- show absolute number
 vim.opt.cursorline = false          -- NO highlight cursor line underneath the cursor horizontally
 vim.opt.splitbelow = true           -- open new vertical split bottom
 vim.opt.splitright = true           -- open new horizontal splits right
+vim.wo.wrap = false                 -- do not soft-wrap lines
 
 -- Searching
 vim.opt.incsearch = true            -- search as characters are entered
