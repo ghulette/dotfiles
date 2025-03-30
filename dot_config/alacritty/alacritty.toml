@@ -3,14 +3,14 @@ general.import = [
 ]
 
 [window]
-dimensions = { columns = 160, lines = 60 }
+dimensions = { columns = 120, lines = 40 }
 padding = { x = 3, y = 3 }
 dynamic_padding = true
 option_as_alt = "OnlyLeft"
 
 [font]
 normal = { family="JetBrainsMono Nerd Font", style="Regular" }
-size = 14
+size = 12
 
 [env]
 TERM = "xterm-256color"
