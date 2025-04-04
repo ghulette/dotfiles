@@ -45,11 +45,30 @@ require("lazy").setup{
     {
         'nvim-telescope/telescope.nvim', tag = '0.1.8',
         dependencies = { 'nvim-lua/plenary.nvim' }
+    },
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        },
+        keys = {
+            {
+                "<leader>?",
+                function()
+                    require("which-key").show({ global = false })
+                end,
+                desc = "Buffer Local Keymaps (which-key)",
+            },
+        },
     }
 }
 
-vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { silent = true })
-vim.keymap.set('n', '<leader>e', ':NvimTreeFocus<CR>', { silent = true })
+-- NvimTree config
+vim.keymap.set('n', '<leader>tt', ':NvimTreeToggle<CR>', { desc = "NvimTree toggle", silent = true })
+vim.keymap.set('n', '<leader>tf', ':NvimTreeFocus<CR>', { desc = "NvimTree focus", silent = true })
 
 -- Telescope config
 local builtin = require('telescope.builtin')
@@ -57,3 +76,9 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find f
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+
+local wk = require("which-key")
+wk.add({
+  { "<leader>t", group = "NvimTree" }, -- group
+  { "<leader>f", group = "Telescope" }, -- group
+})

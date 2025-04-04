@@ -26,9 +26,3 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
 vim.keymap.set('v', '<', '<gv', opts)
 vim.keymap.set('v', '>', '>gv', opts)
 
--------------------
--- Terminal mode --
--------------------
-
-local t_opts = {silent = true}
-vim.keymap.set('t', '<esc>', '<C-\\><C-N><C-W>p', t_opts)
