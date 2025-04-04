@@ -23,6 +23,15 @@ require("lazy").setup{
             require("nvim-surround").setup()
         end
     },
+    {
+        "nvim-tree/nvim-tree.lua",
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        },
+        config = function()
+            require("nvim-tree").setup()
+        end,
+    },
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
@@ -32,6 +41,9 @@ require("lazy").setup{
         dependencies = { 'nvim-lua/plenary.nvim' }
     }
 }
+
+vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { silent = true })
+vim.keymap.set('n', '<leader>e', ':NvimTreeFocus<CR>', { silent = true })
 
 -- Telescope config
 local builtin = require('telescope.builtin')
