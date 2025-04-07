@@ -49,11 +49,6 @@ require("lazy").setup{
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-        },
         keys = {
             {
                 "<leader>?",
@@ -79,6 +74,6 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help ta
 
 local wk = require("which-key")
 wk.add({
-  { "<leader>t", group = "NvimTree" }, -- group
-  { "<leader>f", group = "Telescope" }, -- group
+  { "<leader>t", group = "NvimTree" },
+  { "<leader>f", group = "Telescope" },
 })
