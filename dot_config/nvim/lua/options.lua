@@ -11,6 +11,7 @@ vim.opt.expandtab = true            -- tabs are spaces, mainly because of python
 
 -- UI config
 vim.opt.number = true               -- show absolute number
+vim.opt.relativenumber = true
 vim.opt.cursorline = false          -- NO highlight cursor line underneath the cursor horizontally
 vim.opt.splitbelow = true           -- open new vertical split bottom
 vim.opt.splitright = true           -- open new horizontal splits right
@@ -29,3 +30,11 @@ vim.g.loaded_netrwPlugin = 1
 -- Listchars
 vim.o.listchars = 'tab:>>,lead:·,trail:·'
 vim.o.list = true
+
+-- Always show sign column.
+-- The sign column is used by the LSP support to show diagnostics
+-- (the E, W, etc. characters on the side)
+-- as well as by the Lean plugin to show the orange bars.
+-- By default the sign column is only shown if there are signs to show,
+-- which means the buffer will constantly jump right and left.
+vim.opt.signcolumn = "yes:1"
