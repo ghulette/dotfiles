@@ -21,7 +21,7 @@ require("lazy").setup({
         { import = "lazy-plugins" },
     },
     -- automatically check for plugin updates
-    checker = { enabled = true },
+    -- checker = { enabled = true },
 })
 
 -- NvimTree config
