@@ -36,6 +36,7 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' 
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 vim.keymap.set('n', '<leader>fd', builtin.lsp_document_symbols, { desc = 'Telescope LSP document symbols' })
 vim.keymap.set('n', '<leader>fe', builtin.diagnostics, { desc = 'Telescope LSP diagnostics' })
+vim.keymap.set('n', '<leader>fp', builtin.builtin, { desc = 'Telescope builtin Telescope pickers' })
 
 local wk = require("which-key")
 wk.add({
