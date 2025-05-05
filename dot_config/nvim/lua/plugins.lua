@@ -24,10 +24,6 @@ require("lazy").setup({
     -- checker = { enabled = true },
 })
 
--- NvimTree config
-vim.keymap.set('n', '<leader>tt', ':NvimTreeToggle<CR>', { desc = "NvimTree toggle", silent = true })
-vim.keymap.set('n', '<leader>tf', ':NvimTreeFocus<CR>', { desc = "NvimTree focus", silent = true })
-
 -- Telescope config
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
