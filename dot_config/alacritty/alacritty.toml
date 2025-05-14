@@ -4,8 +4,8 @@ general.import = [
 
 [window]
 dimensions = { columns = 120, lines = 40 }
-padding = { x = 3, y = 3 }
-dynamic_padding = true
+# padding = { x = 3, y = 3 }
+# dynamic_padding = true
 option_as_alt = "OnlyLeft"
 
 [font]
