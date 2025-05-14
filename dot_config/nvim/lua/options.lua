@@ -38,3 +38,5 @@ vim.o.list = true
 -- By default the sign column is only shown if there are signs to show,
 -- which means the buffer will constantly jump right and left.
 vim.opt.signcolumn = "yes:1"
+
+vim.opt.termguicolors = true
