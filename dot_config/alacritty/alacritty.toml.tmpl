@@ -7,10 +7,17 @@ dimensions = { columns = 120, lines = 40 }
 # padding = { x = 3, y = 3 }
 # dynamic_padding = true
 option_as_alt = "OnlyLeft"
+{{ if eq .chezmoi.os "linux" }}
+decorations_theme_variant = "Dark"
+{{ end }}
 
 [font]
 normal = { family="JetBrainsMono Nerd Font", style="Regular" }
-size = {{.terminal_font_size}}
+{{ if eq .chezmoi.os "darwin" }}
+size = 14
+{{ else }}
+size = 12
+{{ end }}
 
 [env]
 TERM = "xterm-256color"
