@@ -1,7 +1,7 @@
 require('mason').setup{}
 require('mason-lspconfig').setup({
     -- A list of servers to automatically install if they're not already installed
-    ensure_installed = { 'lua_ls', 'rust_analyzer' },
+    ensure_installed = { 'lua_ls' },
     automatic_installation = true
 })
 
@@ -77,6 +77,10 @@ lspconfig.rust_analyzer.setup({
 })
 
 lspconfig.pylsp.setup({
+    on_attach = on_attach,
+})
+
+lspconfig.ocamllsp.setup({
     on_attach = on_attach,
 })
 
