@@ -1,8 +1,24 @@
-PROMPT='%1~ %# '
+PROMPT='%~%F{green}❯%f '
 
-# ---- Load local configuration, if available ----
+# Configure history
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+
+# Some nice options
+setopt autocd beep extendedglob nomatch notify
+
+# Use emacs keybindings
+bindkey -e
+zstyle :compinstall filename '/Users/ghulette/.zshrc'
+autoload -Uz compinit
+compinit
+
+# Load local configuration, if available
 [ -f "$HOME/.zshrc_local" ] && source "$HOME/.zshrc_local"
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin":$PATH
 
-# Dump into fish
-exec fish
+# Add aliases only after updating path
+if command -v eza &> /dev/null; then
+  alias ls='eza --icons'
+fi
