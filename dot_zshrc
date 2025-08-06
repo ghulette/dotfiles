@@ -18,9 +18,15 @@ setopt autocd beep extendedglob nomatch notify
 
 # Use emacs keybindings
 bindkey -e
+
+# Completion
 zstyle :compinstall filename '/Users/ghulette/.zshrc'
 autoload -Uz compinit
 compinit
+zstyle ':completion:*' completer _extensions _complete _approximate
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "/Users/ghulette/.zcompcache"
+zstyle ':completion:*' menu select search interactive
 
 # Load local configuration, if available
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin":$PATH
