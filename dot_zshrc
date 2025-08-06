@@ -19,6 +19,8 @@ compinit
 [ -f "$HOME/.zshrc_local" ] && source "$HOME/.zshrc_local"
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin":$PATH
 
+export TZ=/usr/share/zoneinfo/US/Pacific
+
 # Add aliases only after updating path
 if command -v eza &> /dev/null; then
   alias ls='eza --icons'
