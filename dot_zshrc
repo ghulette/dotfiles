@@ -1,5 +1,7 @@
 PROMPT='%~ %F{green}❯%f '
 
+export TZ=/usr/share/zoneinfo/US/Pacific
+
 # Configure history
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -16,10 +18,8 @@ autoload -Uz compinit
 compinit
 
 # Load local configuration, if available
-[ -f "$HOME/.zshrc_local" ] && source "$HOME/.zshrc_local"
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin":$PATH
-
-export TZ=/usr/share/zoneinfo/US/Pacific
+[ -f "$HOME/.zshrc_local" ] && source "$HOME/.zshrc_local"
 
 # Add aliases only after updating path
 if command -v eza &> /dev/null; then
