@@ -4,6 +4,7 @@ PROMPT='%~ %F{green}❯%f '
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
+setopt histignoredups
 
 # Some nice options
 setopt autocd beep extendedglob nomatch notify
