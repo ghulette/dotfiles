@@ -1,6 +1,9 @@
-PROMPT='%3~ %F{green}❯%f '
+setopt PROMPT_SUBST
+PS1='%B%F{cyan}%3~%f%b %B%(?.%F{green}✓%f.%F{red}✗%f)%b '
+
 
 export TZ=/usr/share/zoneinfo/US/Pacific
+
 
 # Configure history
 HISTFILE=~/.zhistory
