@@ -1,7 +1,9 @@
 setopt PROMPT_SUBST
 PS1='%B%F{cyan}%3~/%B%(?.%F{green}❯%f.%F{red}✗%f)%b '
 
-export TZ=/usr/share/zoneinfo/US/Pacific
+if [[ $(uname) == "Darwin" ]]; then
+    export TZ=/usr/share/zoneinfo/US/Pacific
+fi
 
 # Configure history
 HISTFILE=~/.zhistory
