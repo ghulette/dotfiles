@@ -1,7 +1,7 @@
 setopt PROMPT_SUBST
 PS1='%B%F{cyan}%3~/%B%(?.%F{green}❯%f.%F{red}✗%f)%b '
 
-if [[ $(uname) == "Darwin" ]]; then
+if [[ $(hostname) != "framework" ]]; then
     export TZ=/usr/share/zoneinfo/US/Pacific
 fi
 
