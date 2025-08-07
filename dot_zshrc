@@ -12,8 +12,6 @@ SAVEHIST=1000
 setopt APPEND_HISTORY
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
-bindkey '\e[A' history-search-backward
-bindkey '\e[B' history-search-forward
 
 # Some nice options
 setopt autocd beep extendedglob nomatch notify
