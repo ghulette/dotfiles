@@ -27,6 +27,7 @@ bindkey -e
 zstyle :compinstall filename '/Users/ghulette/.zshrc'
 autoload -Uz compinit
 compinit
+setopt globdots
 zstyle ':completion:*' completer _extensions _complete _approximate
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "/Users/ghulette/.zcompcache"
@@ -38,5 +39,5 @@ zstyle ':completion:*' menu select search interactive
 
 # Add aliases only after updating path
 if command -v eza &> /dev/null; then
-  alias ls='eza --icons'
+  alias ls='eza --icons auto'
 fi
