@@ -43,8 +43,10 @@ local on_attach = function(client, bufnr)
     end, bufopts)
 end
 
-local lspconfig = require("lspconfig")
-lspconfig.lua_ls.setup({
+-- Configure LSP servers using the new vim.lsp.config API
+vim.lsp.config('lua_ls', {
+    cmd = { 'lua-language-server' },
+    root_markers = { '.luarc.json', '.luarc.jsonc', '.luacheckrc', '.stylua.toml', 'stylua.toml', 'selene.toml', 'selene.yml', '.git' },
     on_attach = on_attach,
     settings = {
         Lua = {
@@ -68,21 +70,26 @@ lspconfig.lua_ls.setup({
     },
 })
 
-lspconfig.racket_langserver.setup{
-    on_attach = on_attach,
-}
-
-lspconfig.rust_analyzer.setup({
+vim.lsp.config('racket_langserver', {
+    cmd = { 'racket-langserver' },
+    root_markers = { 'info.rkt' },
     on_attach = on_attach,
 })
 
-lspconfig.pylsp.setup({
+vim.lsp.config('rust_analyzer', {
+    cmd = { 'rust-analyzer' },
+    root_markers = { 'Cargo.toml', 'rust-project.json' },
     on_attach = on_attach,
 })
 
-lspconfig.ocamllsp.setup({
+vim.lsp.config('pylsp', {
+    cmd = { 'pylsp' },
+    root_markers = { 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile', '.git' },
     on_attach = on_attach,
 })
+
+-- Enable the configured LSP servers
+vim.lsp.enable({ 'lua_ls', 'racket_langserver', 'rust_analyzer', 'pylsp'})
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
