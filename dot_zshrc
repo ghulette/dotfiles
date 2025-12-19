@@ -1,10 +1,6 @@
 setopt PROMPT_SUBST
 PS1='%B%F{cyan}%3~/%B%(?.%F{green}❯%f.%F{red}✗%f)%b '
 
-if [[ $(hostname) != "framework" ]]; then
-    export TZ=/usr/share/zoneinfo/US/Pacific
-fi
-
 # Configure history
 HISTFILE=~/.zhistory
 HISTSIZE=1000

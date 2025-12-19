@@ -14,11 +14,6 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer.
 local on_attach = function(client, bufnr)
-    if client.name == "rust_analyzer" then
-        -- WARNING: This feature requires Neovim 0.10 or later.
-        vim.lsp.inlay_hint.enable()
-    end
-
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
@@ -76,12 +71,6 @@ vim.lsp.config('racket_langserver', {
     on_attach = on_attach,
 })
 
-vim.lsp.config('rust_analyzer', {
-    cmd = { 'rust-analyzer' },
-    root_markers = { 'Cargo.toml', 'rust-project.json' },
-    on_attach = on_attach,
-})
-
 vim.lsp.config('pylsp', {
     cmd = { 'pylsp' },
     root_markers = { 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile', '.git' },
@@ -89,7 +78,7 @@ vim.lsp.config('pylsp', {
 })
 
 -- Enable the configured LSP servers
-vim.lsp.enable({ 'lua_ls', 'racket_langserver', 'rust_analyzer', 'pylsp'})
+vim.lsp.enable({ 'lua_ls', 'racket_langserver', 'pylsp'})
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
