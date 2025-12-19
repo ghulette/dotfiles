@@ -1,1 +1,2 @@
 theme = Catppuccin Frappe
+keybind = super+enter=unbind
