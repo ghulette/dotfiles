@@ -1,2 +1,3 @@
 theme = Catppuccin Frappe
 keybind = super+enter=unbind
+mouse-hide-while-typing = true
