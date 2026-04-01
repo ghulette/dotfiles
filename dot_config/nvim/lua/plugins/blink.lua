@@ -4,11 +4,11 @@ return {
     completion = {
       menu = {
         auto_show = false,
-        auto_show_delay_ms = 500, -- Delay in ms
+        auto_show_delay_ms = 500,
       },
       documentation = {
         auto_show = false,
-        auto_show_delay_ms = 500, -- Delay in ms
+        auto_show_delay_ms = 500,
       },
     },
   },
