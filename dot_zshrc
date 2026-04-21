@@ -37,3 +37,8 @@ zstyle ':completion:*' menu select search interactive
 if command -v eza &> /dev/null; then
   alias ls='eza --icons auto'
 fi
+
+# AIM CLI (only if installed)
+if [ -d "$HOME/.aim/mcp-servers" ]; then
+  export PATH="$HOME/.aim/mcp-servers:$PATH"
+fi
