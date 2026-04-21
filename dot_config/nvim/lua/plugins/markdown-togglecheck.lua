@@ -8,10 +8,16 @@ local function toggle_check()
     new = line:gsub("%- %[x%]", "- [ ]", 1)
   elseif line:match("^%s*%- ") then
     new = line:gsub("^(%s*%- )", "%1[ ] ", 1)
+  elseif line:match("^%s*$") then
+    new = "- [ ] "
   else
     return
   end
   vim.api.nvim_set_current_line(new)
+  -- On a fresh empty checkbox, drop into insert mode at end of line.
+  if line:match("^%s*$") then
+    vim.cmd("startinsert!")
+  end
 end
 
 vim.api.nvim_create_autocmd("FileType", {
