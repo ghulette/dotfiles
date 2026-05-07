@@ -61,6 +61,9 @@ return {
         ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
 
+        -- put cursor near the top with 2 lines of context above
+        ["zz"] = { "zt2<C-y>", desc = "Cursor near top (2 lines above)" },
+
         -- mappings seen under group name "Buffer"
         ["<Leader>bd"] = {
           function()
