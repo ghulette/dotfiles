@@ -126,7 +126,7 @@ def _draw_right_status(draw_data: DrawData, screen: Screen, is_last: bool) -> No
         icon = _battery_icon(pct, charging)
         cells.append((FG_LOW_BATTERY if low else default_fg, f"{icon}  "))
 
-    cells.append((default_fg, datetime.now().strftime("%Y-%m-%d %-I:%M %p")))
+    cells.append((default_fg, datetime.now().strftime("%a %b %-d %-I:%M%p")))
     cells.append((default_fg, " "))
 
     right_len = sum(wcswidth(text) for _, text in cells)
