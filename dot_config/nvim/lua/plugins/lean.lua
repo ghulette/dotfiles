@@ -4,7 +4,7 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
   },
-  opts = {
-    mappings = true,
-  }
+  config = function()
+    vim.g.lean_config = { mappings = true }
+  end,
 }

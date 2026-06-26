@@ -32,6 +32,7 @@ zstyle ':completion:*' menu select search interactive
 # Load local configuration, if available
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin":$PATH
 [ -f "$HOME/.zshrc_local" ] && source "$HOME/.zshrc_local"
+[ -d "$HOME/.elan" ] && export PATH="$HOME/.elan/bin:$PATH"
 
 # Add aliases only after updating path
 if command -v eza &> /dev/null; then
