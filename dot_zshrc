@@ -13,6 +13,12 @@ setopt HIST_IGNORE_ALL_DUPS
 bindkey '\e[A' history-search-backward
 bindkey '\e[B' history-search-forward
 
+# Word movement with Alt+arrow and Ctrl+arrow
+bindkey '\e[1;3C' forward-word
+bindkey '\e[1;3D' backward-word
+bindkey '\e[1;5C' forward-word
+bindkey '\e[1;5D' backward-word
+
 # Some nice options
 setopt autocd beep extendedglob nomatch notify
 
