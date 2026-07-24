@@ -1,0 +1,9 @@
+# Ghostty configuration
+# Ported from kitty. Matches the Catppuccin Frappe theme.
+# Panes/splits are handled by tmux, not ghostty.
+
+theme = Catppuccin Frappe
+
+font-family = JetBrainsMono Nerd Font Mono
+
+macos-option-as-alt = left
