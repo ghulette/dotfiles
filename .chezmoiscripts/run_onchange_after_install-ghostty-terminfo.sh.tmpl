@@ -1,0 +1,33 @@
+#!/bin/sh
+# Compile the ghostty terminfo entry into ~/.terminfo.
+#
+# Ghostty sets TERM=xterm-ghostty, and ssh forwards that to the remote — but
+# terminfo databases are local, and most distros' ncurses is too old to ship a
+# ghostty entry. Without this, tmux on a remote host dies with "missing or
+# unsuitable terminal: xterm-ghostty".
+#
+# Installs user-local (~/.terminfo), so no root needed. Harmless on machines
+# that already have a system entry — ~/.terminfo just shadows it with the same
+# thing. The hash below re-triggers this script whenever the source changes.
+#
+# source sha256: {{ include "dot_config/terminfo/xterm-ghostty.terminfo" | sha256sum }}
+
+set -eu
+
+src="$HOME/.config/terminfo/xterm-ghostty.terminfo"
+
+if ! command -v tic >/dev/null 2>&1; then
+    echo "tic not found — skipping xterm-ghostty terminfo install" >&2
+    exit 0
+fi
+
+if [ ! -f "$src" ]; then
+    echo "$src missing — skipping xterm-ghostty terminfo install" >&2
+    exit 0
+fi
+
+# tic warns "older tic versions may treat the description field as an alias" on
+# the multi-name header line. Benign forward-compat note; the entry compiles.
+tic -x -o "$HOME/.terminfo" "$src"
+
+echo "installed xterm-ghostty terminfo into $HOME/.terminfo"
