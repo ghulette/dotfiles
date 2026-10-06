@@ -10,5 +10,8 @@ font-size = 13
 window-width = 120
 window-height = 40
 window-save-state = never
+window-inherit-working-directory = false
+
+mouse-hide-while-typing = true
 
 macos-option-as-alt = left
