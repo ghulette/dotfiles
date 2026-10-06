@@ -5,6 +5,10 @@
 theme = Catppuccin Frappe
 
 font-family = JetBrainsMono Nerd Font Mono
-font-size = 16
+font-size = 13
+
+window-width = 120
+window-height = 40
+window-save-state = never
 
 macos-option-as-alt = left
