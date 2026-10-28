@@ -1,8 +1,8 @@
 # Ghostty configuration
-# Ported from kitty. Matches the Catppuccin Frappe theme.
+# Ported from kitty. Uses the VS Code Dark+ theme.
 # Panes/splits are handled by tmux, not ghostty.
 
-theme = Catppuccin Frappe
+theme = Dark+
 
 font-family = JetBrainsMono Nerd Font Mono
 font-size = 14
