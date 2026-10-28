@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+# chezmoi modify script for ~/.claude/settings.json.
+# The rest of the file is machine-specific (and rewritten by other tools), so
+# only the "hooks" key is managed here; everything else passes through as-is.
+import json
+import sys
+
+STATUS = "$HOME/.config/tmux/scripts/claude-status.sh"
+
+
+def hook(command, matcher=None):
+    entry = {"hooks": [{"type": "command", "command": command}]}
+    if matcher:
+        entry = {"matcher": matcher, **entry}
+    return [entry]
+
+
+current = sys.stdin.read()
+settings = json.loads(current) if current.strip() else {}
+settings["hooks"] = {
+    # Flag the tmux window when Claude finishes or needs input
+    "Stop": hook(f"{STATUS} done"),
+    # Not idle_prompt: that fires a minute after every Stop and would turn
+    # each ✓ into !
+    "Notification": hook(f"{STATUS} attention", "permission_prompt|elicitation_dialog"),
+    # Clear it once you reply or the session ends
+    "UserPromptSubmit": hook(STATUS),
+    "SessionEnd": hook(STATUS),
+}
+json.dump(settings, sys.stdout, indent=2, ensure_ascii=False)
+sys.stdout.write("\n")
