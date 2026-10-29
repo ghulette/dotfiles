@@ -1,0 +1,14 @@
+# Open files in nvim. yazi's default "edit" opener runs $EDITOR, which is
+# nano on some machines.
+[opener]
+edit = [
+	{ run = "nvim %s", desc = "nvim", for = "unix", block = true },
+]
+
+# yazi's defaults only edit text/*, JSON, JavaScript, and empty files, and send
+# everything else to the system opener. Edit these code/config types too.
+[open]
+prepend_rules = [
+	{ mime = "application/{toml,yaml,x-yaml,xml,x-shellscript,x-sh,sql,x-ndjson}", use = [ "edit", "reveal" ] },
+	{ url = "*.{toml,yaml,yml,lua,sh,zsh,bash,lean,smithy,tla,just,conf,ini,cfg,env,lock,log,jsonl}", use = [ "edit", "reveal" ] },
+]
