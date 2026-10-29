@@ -1,0 +1,7 @@
+[plugin]
+deps = []
+
+[[flavor.deps]]
+use = "956MB/vscode-dark-plus"
+rev = "e9f118a"
+hash = "e317dae3ab774e6e2cb69a6e181a810f"

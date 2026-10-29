@@ -1,2 +1,12 @@
-# Empty: use yazi's built-in theme, which follows the terminal colors.
-# The old Catppuccin Frappe theme is in git history.
+# VS Code Dark+ flavor, to match Ghostty and nvim:
+# https://github.com/956MB/vscode-dark-plus.yazi
+#
+# Flavors aren't stored in the dotfiles, only pinned in package.toml. On a new
+# machine, after `chezmoi apply`, install them with:
+#   ya pkg install
+# To set it up from scratch instead (adds it to package.toml):
+#   ya pkg add 956MB/vscode-dark-plus
+# Update to the latest version with `ya pkg upgrade`.
+
+[flavor]
+dark = "vscode-dark-plus"
