@@ -1,0 +1,23 @@
+# Leftovers from the AstroNvim config (replaced by a single init.lua)
+.config/nvim/README.md
+.config/nvim/neovim.yml
+.config/nvim/selene.toml
+.config/nvim/.luarc.json
+.config/nvim/.neoconf.json
+.config/nvim/.stylua.toml
+.config/nvim/lua/community.lua
+.config/nvim/lua/lazy_setup.lua
+.config/nvim/lua/polish.lua
+.config/nvim/lua/plugins/astrocore.lua
+.config/nvim/lua/plugins/astrolsp.lua
+.config/nvim/lua/plugins/astroui.lua
+.config/nvim/lua/plugins/blink.lua
+.config/nvim/lua/plugins/catppuccin.lua
+.config/nvim/lua/plugins/lean.lua
+.config/nvim/lua/plugins/markdown-togglecheck.lua
+.config/nvim/lua/plugins/mason.lua
+.config/nvim/lua/plugins/none-ls.lua
+.config/nvim/lua/plugins/render-markdown.lua
+.config/nvim/lua/plugins/treesitter.lua
+.config/nvim/lua/plugins/user.lua
+.config/nvim/lua/plugins/vscode.lua
