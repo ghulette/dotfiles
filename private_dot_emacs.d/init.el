@@ -71,6 +71,11 @@
 (use-package lean4-mode
   :commands lean4-mode
   :vc (:url "https://github.com/leanprover-community/lean4-mode.git"
-       :rev :last-release))
+       :rev :last-release)
+  :config
+  ;; The Lean server sends workspace/inlayHint/refresh, which lsp-mode has no
+  ;; handler for, so each one logs "Unknown request method". Ack and ignore.
+  (puthash "workspace/inlayHint/refresh" #'ignore
+           (lsp--client-request-handlers (gethash 'lean4-lsp lsp-clients))))
 
 ;;; init.el ends here
