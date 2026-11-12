@@ -1,5 +1,5 @@
 -- Minimal nvim config: VS Code Dark+ theme, Telescope, treesitter
--- highlighting, and which-key hints. No LSP, no completion.
+-- highlighting, which-key hints, and lean.nvim. No other LSP, no completion.
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
@@ -125,6 +125,18 @@ require("lazy").setup({
           end))
         end,
       })
+    end,
+  },
+  {
+    -- Lean 4: LSP (via `lake serve`), infoview, unicode abbreviations (\to, \forall, ...)
+    "Julian/lean.nvim",
+    event = { "BufReadPre *.lean", "BufNewFile *.lean" },
+    dependencies = { "nvim-telescope/telescope.nvim" }, -- Lean pickers, :Telescope loogle
+    -- lean.nvim has no setup(); it reads vim.g.lean_config, so set it before load.
+    init = function()
+      vim.g.lean_config = {
+        mappings = true, -- suggested <LocalLeader> mappings (e.g. ,i toggles the infoview)
+      }
     end,
   },
   {
