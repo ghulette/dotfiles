@@ -37,7 +37,9 @@
 (save-place-mode 1)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
-(load-theme 'modus-vivendi t)
+;; VS Code Dark+, matching Ghostty and nvim.
+(use-package vscode-dark-plus-theme
+  :config (load-theme 'vscode-dark-plus t))
 
 ;; Built-in vertical completion in the minibuffer, and key hints.
 (fido-vertical-mode 1)
