@@ -28,4 +28,7 @@ settings["hooks"] = {
     "SessionEnd": hook(STATUS),
 }
 json.dump(settings, sys.stdout, indent=2, ensure_ascii=False)
-sys.stdout.write("\n")
+# Claude Code writes the file without a trailing newline; match whatever is
+# there so chezmoi doesn't flag the file after every rewrite.
+if current.endswith("\n") or not current.strip():
+    sys.stdout.write("\n")
