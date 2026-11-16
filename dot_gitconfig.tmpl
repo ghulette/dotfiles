@@ -20,3 +20,8 @@
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     type = cat-file -t
     dump = cat-file -p
+
+# Machine-specific settings (credentials, work remotes); untracked, and git
+# skips the include if the file is missing. Last, so it can override the above.
+[include]
+    path = ~/.gitconfig.local
