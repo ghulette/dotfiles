@@ -50,6 +50,13 @@ if [ -d "$HOME/.aim/mcp-servers" ]; then
   export PATH="$HOME/.aim/mcp-servers:$PATH"
 fi
 
+# Cloud desktop management appends the next lines to ~/.zshrc whenever
+# they are missing, so keep them here verbatim to stop it editing this file.
+# Harmless elsewhere: it only stops AWS SDKs probing for EC2 instance metadata.
+# if you wish to use IMDS set AWS_EC2_METADATA_DISABLED=false
+
+export AWS_EC2_METADATA_DISABLED=true
+
 # Warn when notes-sync (cron; ~/.local/bin/notes-sync) has stopped working:
 # a failure with no successful sync for 30 minutes (so one-off blips stay
 # quiet), or no successful sync at all for a day (cron not running?). Silent
