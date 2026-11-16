@@ -7,6 +7,10 @@
 #   git clone <hub>:notes.git ~/Notes
 #   git -C ~/Notes config notes.autosync true
 # The hub's address lives only in each clone's .git/config, never in this repo.
+#
+# Status for the shell warning in .zshrc: ~/.cache/notes-sync.ok holds the time
+# of the last successful sync; ~/.cache/notes-sync.err holds the latest failure
+# and is removed on success.
 
 set -eu
 
@@ -19,14 +23,37 @@ dir="${NOTES_DIR:-$HOME/Notes}"
 [ "$(git -C "$dir" config --bool notes.autosync 2>/dev/null)" = true ] || exit 0
 cd "$dir"
 
+cache="$HOME/.cache"
+ok="$cache/notes-sync.ok"
+err="$cache/notes-sync.err"
+log="$cache/notes-sync.log"
+mkdir -p "$cache"
+
+# Under cron, send git's errors to the log, keeping only its recent tail.
+if [ ! -t 2 ]; then
+    if [ -f "$log" ] && [ "$(wc -l <"$log")" -gt 1000 ]; then
+        tail -n 500 "$log" >"$log.tmp" && mv "$log.tmp" "$log"
+    fi
+    exec 2>>"$log"
+fi
+
+fail() {
+    echo "$1 (last synced: $(cat "$ok" 2>/dev/null || echo never))" >"$err"
+    echo "$(date '+%F %T') $1" >&2
+    exit 1
+}
+
 git add -A
 git diff --cached --quiet || git commit -qm "sync from $(hostname -s)"
 
-# On a conflict, back out and keep the local commit unpushed. Each run retries
-# (and logs) until it's resolved by hand with `git pull --rebase` in ~/Notes.
-if ! git pull -q --rebase; then
+git fetch -q || fail "can't reach the hub (offline, hub down, or Midway expired?)"
+# On a conflict, back out and keep the local commit unpushed; each run retries
+# until it's resolved by hand.
+if ! git rebase -q '@{u}' >/dev/null; then
     git rebase --abort 2>/dev/null || true
-    echo "$(date '+%F %T') notes-sync: pull failed in $dir; run: git -C $dir pull --rebase" >&2
-    exit 1
+    fail "conflict with another machine's edits; fix with: git -C $dir pull --rebase"
 fi
-git push -q
+git push -q || fail "can't push to the hub"
+
+date '+%F %H:%M' >"$ok"
+rm -f "$err"

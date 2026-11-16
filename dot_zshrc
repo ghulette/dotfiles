@@ -49,3 +49,17 @@ fi
 if [ -d "$HOME/.aim/mcp-servers" ]; then
   export PATH="$HOME/.aim/mcp-servers:$PATH"
 fi
+
+# Warn when notes-sync (cron; ~/.local/bin/notes-sync) has stopped working:
+# a failure with no successful sync for 30 minutes (so one-off blips stay
+# quiet), or no successful sync at all for a day (cron not running?). Silent
+# on machines where it isn't set up, since neither status file exists there.
+() {
+  local ok=~/.cache/notes-sync.ok err=~/.cache/notes-sync.err
+  local -a recent=( $ok(N.mm-30) ) today=( $ok(N.mh-24) )
+  if [[ -e $err && -z $recent ]]; then
+    print -nP "%F{yellow}notes-sync:%f "; print -r -- "$(<$err)"
+  elif [[ -e $ok && -z $today ]]; then
+    print -nP "%F{yellow}notes-sync:%f "; print -r -- "no successful sync since $(<$ok) (is cron running?)"
+  fi
+}

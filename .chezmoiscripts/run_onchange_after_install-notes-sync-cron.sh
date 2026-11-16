@@ -14,8 +14,8 @@ if ! command -v crontab >/dev/null 2>&1; then
     exit 0
 fi
 
-mkdir -p "$HOME/.cache"
-entry='*/5 * * * * $HOME/.local/bin/notes-sync >>$HOME/.cache/notes-sync.log 2>&1'
+# notes-sync writes its own log (~/.cache/notes-sync.log) when run from cron.
+entry='*/5 * * * * $HOME/.local/bin/notes-sync >/dev/null 2>&1'
 { crontab -l 2>/dev/null | grep -v 'notes-sync' || true; echo "$entry"; } | crontab -
 
 echo "installed notes-sync cron entry"
