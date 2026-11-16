@@ -1,0 +1,21 @@
+#!/bin/sh
+# Install a cron entry that runs ~/.local/bin/notes-sync every 5 minutes.
+#
+# cron rather than launchd/systemd: it works the same on macOS and the cloud
+# desktops, and keeps running with nobody logged in (systemd user timers need
+# lingering). notes-sync is a no-op on machines that haven't opted in, so
+# installing this everywhere is harmless. Re-runs whenever this file changes,
+# replacing the previous entry; other crontab lines are left alone.
+
+set -eu
+
+if ! command -v crontab >/dev/null 2>&1; then
+    echo "crontab not found — skipping notes-sync cron install" >&2
+    exit 0
+fi
+
+mkdir -p "$HOME/.cache"
+entry='*/5 * * * * $HOME/.local/bin/notes-sync >>$HOME/.cache/notes-sync.log 2>&1'
+{ crontab -l 2>/dev/null | grep -v 'notes-sync' || true; echo "$entry"; } | crontab -
+
+echo "installed notes-sync cron entry"

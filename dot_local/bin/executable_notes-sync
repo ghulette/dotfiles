@@ -1,0 +1,32 @@
+#!/bin/sh
+# Sync ~/Notes with its git remote: commit local edits, rebase onto the
+# remote, push. Run every few minutes by cron (see
+# .chezmoiscripts/run_onchange_after_install-notes-sync-cron.sh).
+#
+# Opt-in per machine, so it does nothing where the notes repo isn't set up:
+#   git clone <hub>:notes.git ~/Notes
+#   git -C ~/Notes config notes.autosync true
+# The hub's address lives only in each clone's .git/config, never in this repo.
+
+set -eu
+
+# cron's PATH is minimal; ssh may need wssh (/usr/local/bin) as its proxy.
+PATH="/usr/local/bin:/opt/homebrew/bin:$HOME/.toolbox/bin:$PATH"
+# Never prompt, and give up on a dead connection instead of hanging.
+export GIT_SSH_COMMAND="ssh -o BatchMode=yes -o ConnectTimeout=20 -o ServerAliveInterval=15 -o ServerAliveCountMax=2"
+
+dir="${NOTES_DIR:-$HOME/Notes}"
+[ "$(git -C "$dir" config --bool notes.autosync 2>/dev/null)" = true ] || exit 0
+cd "$dir"
+
+git add -A
+git diff --cached --quiet || git commit -qm "sync from $(hostname -s)"
+
+# On a conflict, back out and keep the local commit unpushed. Each run retries
+# (and logs) until it's resolved by hand with `git pull --rebase` in ~/Notes.
+if ! git pull -q --rebase; then
+    git rebase --abort 2>/dev/null || true
+    echo "$(date '+%F %T') notes-sync: pull failed in $dir; run: git -C $dir pull --rebase" >&2
+    exit 1
+fi
+git push -q
