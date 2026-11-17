@@ -39,7 +39,7 @@ fi
 
 fail() {
     echo "$1 (last synced: $(cat "$ok" 2>/dev/null || echo never))" >"$err"
-    echo "$(date '+%F %T') $1" >&2
+    echo "$(date '+%F %T %Z') $1" >&2
     exit 1
 }
 
@@ -55,5 +55,5 @@ if ! git rebase -q '@{u}' >/dev/null; then
 fi
 git push -q || fail "can't push to the hub"
 
-date '+%F %H:%M' >"$ok"
+date '+%F %H:%M %Z' >"$ok"
 rm -f "$err"
