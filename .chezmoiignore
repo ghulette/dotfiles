@@ -2,3 +2,6 @@ README.md
 .config/tmux/plugins/*/.git
 .config/tmux/plugins/*/.git/**
 .config/nvim/lazy-lock.json
+{{- if not (dig "notesSync" true .) }}
+.local/bin/notes-sync
+{{- end }}
